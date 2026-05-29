@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools Finder - Recomendador de Ferramentas de IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🤖</span>
+                    <h1>AI Tools Finder</h1>
+                    <p class="logo-subtitle">Encontre a ferramenta de IA perfeita</p>
+                </div>
+                <button id="helpBtn" class="help-btn" title="Abrir assistente de ajuda">
+                    <span class="help-icon">❓</span>
+                    <span class="help-text">Ajuda IA</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- SEÇÃO INICIAL / WELCOME -->
+            <section id="welcomeSection" class="section welcome-section active">
+                <div class="welcome-container">
+                    <div class="welcome-animation">
+                        <div class="animation-circle"></div>
+                        <span class="animation-icon">🚀</span>
+                    </div>
+                    <h2 class="welcome-title">Encontre a Ferramenta de IA Perfeita</h2>
+                    <p class="welcome-subtitle">Responda algumas perguntas simples e descubra quais ferramentas de IA são ideais para suas necessidades e objetivos.</p>
+                    
+                    <ul class="features-list">
+                        <li class="feature-item">
+                            <span class="feature-icon">✅</span>
+                            <span class="feature-text">Recomendações personalizadas baseadas em seu perfil</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon">🎯</span>
+                            <span class="feature-text">Filtros inteligentes para resultados precisos</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon">📚</span>
+                            <span class="feature-text">Descrições detalhadas de cada ferramenta</span>
+                        </li>
+                        <li class="feature-item">
+                            <span class="feature-icon">🤖</span>
+                            <span class="feature-text">Assistente IA integrado para esclarecer dúvidas</span>
+                        </li>
+                    </ul>
+
+                    <div class="time-estimate">
+                        <span class="time-icon">⏱️</span>
+                        <p>Leva apenas <strong>2 minutos</strong> para completar</p>
+                    </div>
+                    
+                    <button id="startBtn" class="btn btn-primary btn-large">
+                        🚀 Começar Agora
+                    </button>
+                </div>
+            </section>
+
+            <!-- SEÇÃO DO QUESTIONÁRIO -->
+            <section id="questionnaireSection" class="section questionnaire-section">
+                <!-- PROGRESS BAR -->
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span class="progress-label">Progresso</span>
+                        <span class="progress-count"><span id="currentStep">0</span> / 4</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <p class="progress-text">Respondendo perguntas...</p>
+                </div>
+
+                <!-- QUESTIONNAIRE CONTENT -->
+                <div class="questionnaire-content">
+                    <div id="questionsContainer" class="questions-container"></div>
+                </div>
+
+                <!-- BOTÕES DE NAVEGAÇÃO -->
+                <div class="navigation-buttons">
+                    <button id="prevBtn" class="btn btn-secondary" style="display: none;">
+                        ← Anterior
+                    </button>
+                    <button id="nextBtn" class="btn btn-primary" style="display: none;">
+                        Próximo →
+                    </button>
+                    <button id="submitBtn" class="btn btn-success" style="display: none;">
+                        ✓ Ver Recomendações
+                    </button>
+                </div>
+            </section>
+
+            <!-- SEÇÃO DE RECOMENDAÇÕES -->
+            <section id="recommendationsSection" class="section recommendations-section">
+                <div class="recommendations-header">
+                    <h2>🎯 Ferramentas Recomendadas</h2>
+                    <p id="recommendationSubtitle" class="recommendation-subtitle"></p>
+                </div>
+
+                <div id="recommendationsContainer" class="recommendations-container"></div>
+
+                <div class="action-buttons">
+                    <button id="restartBtn" class="btn btn-secondary">
+                        🔄 Refazer Questionário
+                    </button>
+                    <button id="shareBtn" class="btn btn-primary">
+                        📤 Compartilhar Resultados
+                    </button>
+                </div>
+
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <p>Nenhuma recomendação encontrada. Tente ajustar seus critérios.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- MODAL DE AJUDA IA -->
+        <div id="helpModal" class="modal">
+            <div class="modal-content help-modal">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <span class="modal-icon">🤖</span>
+                        <h3>Assistente IA - Ajuda</h3>
+                    </div>
+                    <button id="closeHelpBtn" class="close-btn" title="Fechar">✕</button>
+                </div>
+
+                <div id="helpConversation" class="help-conversation">
+                    <div class="help-message system-message">
+                        <p>👋 Olá! Sou seu assistente de IA. Posso ajudar você a entender melhor qualquer conceito do sistema. O que você gostaria de saber?</p>
+                    </div>
+                </div>
+
+                <div class="help-input-container">
+                    <input 
+                        type="text" 
+                        id="helpInput" 
+                        placeholder="Digite sua pergunta aqui..." 
+                        class="help-input"
+                    >
+                    <button id="sendHelpBtn" class="btn btn-primary btn-small">
+                        Enviar
+                    </button>
+                </div>
+
+                <div class="help-footer">
+                    <p class="help-info">💡 <small>Você pode perguntar sobre qualquer conceito ou critério do sistema</small></p>
+                    <p class="help-tips"><small>Exemplos: "O que significa open-source?", "Qual a diferença entre os níveis?"</small></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL DE OVERLAY -->
+        <div id="modalOverlay" class="modal-overlay"></div>
+
+        <!-- LOADING INDICATOR -->
+        <div id="loadingIndicator" class="loading-indicator">
+            <div class="spinner"></div>
+            <p>Processando recomendações...</p>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; 2026 AI Tools Recommendation System | Desenvolvido com <span class="heart">❤️</span> e IA Agêntica</p>
+            <p class="footer-note">Versão 1.0 - Sistema de Recomendação Inteligente</p>
+        </footer>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="data.js"></script>
+    <script src="recommendations-engine.js"></script>
+    <script src="ai-assistant.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
