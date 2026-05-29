@@ -4,10 +4,12 @@
   "description": "Sistema de Recomendação de Ferramentas de IA",
   "main": "index.html",
   "scripts": {
-    "dev": "npx http-server -p 3000 -c-1"
+    "dev": "npx http-server -p 3000 -c-1",
+    "deploy": "gh-pages -d ."
   },
   "dependencies": {},
   "devDependencies": {
+    "gh-pages": "^6.1.1",
     "http-server": "^14.1.1"
   }
 }
