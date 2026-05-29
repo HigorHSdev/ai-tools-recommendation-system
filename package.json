@@ -1,0 +1,13 @@
+{
+  "name": "ai-tools-recommendation-system",
+  "version": "1.0.0",
+  "description": "Sistema de Recomendação de Ferramentas de IA",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000 -c-1"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

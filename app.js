@@ -141,7 +141,7 @@ function renderRecommendations() {
             <div class="recommendation-description">${item.shortDescription}</div>
             <div class="recommendation-meta">
                 <div class="meta-item"><span class="meta-label">Licença</span> <span class="meta-value">${item.license}</span></div>
-                <div class="meta-item"><span class="meta-label">Nível</span> <span class="meta-value">${item.skillLevels.map( s => ({accessible:'Acessível',challenge:'Desafio',complex:'Complexo'}[s]).join(", ")}</span></div>
+                <div class="meta-item"><span class="meta-label">Nível</span> <span class="meta-value">${item.skillLevels.map( s => ({accessible:'Acessível',challenge:'Desafio',complex:'Complexo'}[s])).join(", ")}</span></div>
             </div>
             <div class="recommendation-reasons">
                 <div class="reasons-title">Por que recomendar?</div>
