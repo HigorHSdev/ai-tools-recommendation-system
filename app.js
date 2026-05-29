@@ -4,10 +4,10 @@
 
 // Estados globais
 let userProfile = {
-    skillLevel: null,
-    projectType: null,
-    costLicense: null,
-    controlLevel: null
+    skill_level: null,
+    project_type: null,
+    cost_license: null,
+    control_level: null
 };
 
 let currentStep = 0;
@@ -75,7 +75,7 @@ document.getElementById('startBtn').onclick = () => {
     showSection("questionnaireSection");
     currentStep = 0;
     userProfile = {
-        skillLevel: null, projectType: null, costLicense: null, controlLevel: null
+        skill_level: null, project_type: null, cost_license: null, control_level: null
     };
     renderQuestion();
     updateProgressBar();
@@ -114,10 +114,10 @@ function showLoading(show) {
 function renderRecommendations() {
     showSection('recommendationsSection');
     const recommendations = recommendTools({
-        skillLevel: userProfile.skillLevel,
-        projectType: userProfile.projectType,
-        costLicense: userProfile.costLicense,
-        controlLevel: userProfile.controlLevel
+        skillLevel: userProfile.skill_level,
+        projectType: userProfile.project_type,
+        costLicense: userProfile.cost_license,
+        controlLevel: userProfile.control_level
     });
 
     document.getElementById('recommendationsContainer').innerHTML = '';
@@ -168,7 +168,7 @@ function formatProfile() {
         costLicense: {"open-source":"Open-source","proprietario":"Proprietário"},
         controlLevel: {flexibilidade_total:"Flexibilidade total", "solucao_pronta":"Solução pronta"}
     };
-    return `${labels.skillLevel[userProfile.skillLevel]}, ${labels.projectType[userProfile.projectType]}, ${labels.costLicense[userProfile.costLicense]}, ${labels.controlLevel[userProfile.controlLevel]}`;
+    return `${labels.skillLevel[userProfile.skill_level]}, ${labels.projectType[userProfile.project_type]}, ${labels.costLicense[userProfile.cost_license]}, ${labels.controlLevel[userProfile.control_level]}`;
 }
 
 // Refazer questionário
@@ -176,7 +176,7 @@ document.getElementById('restartBtn').onclick = () => {
     showSection("questionnaireSection");
     currentStep = 0;
     userProfile = {
-        skillLevel: null, projectType: null, costLicense: null, controlLevel: null
+        skill_level: null, project_type: null, cost_license: null, control_level: null
     };
     renderQuestion();
     updateProgressBar();
